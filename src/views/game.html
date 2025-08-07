@@ -1,64 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Bingo</title>
+    <link rel="stylesheet" href="static/css/core.css" />
+    <link rel="stylesheet" href="static/css/game.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coding Bingo</title>
-  <link rel="stylesheet" href="static/css/core.css">
-  <link rel="stylesheet" href="static/css/game.css">
-</head>
-
-<body>
-
-  <div id="overlay-container">
-    <div id="overlay-left" hidden>
-      <p id="overlay-left-text"></p>
-    </div>
-    <div id="overlay-right" hidden>
-      <p id="overlay-right-text"></p>
-    </div>
-  </div>
-  <image id="crown" src="static/images/crown.png" alt="Crown" class="crown"></image>
-  <image id="draw" src="static/images/draw.png" alt="Draw" class="draw"></image>
-
-  <div id="bingoContainer" class="bingo-container">
-
-    <div id="bingoBoardContainer" class="bingo-board center-panel"></div>
-
-    <div id="leftPanel" class="left-panel">
-      <p id="p1Name"></p>
-      <div class="avatar-container">
-        <img id="p1Avatar" src="" alt="Player 1 Avatar" class="avatar">
+  <body>
+    <div id="overlay-container">
+      <div id="overlay-left" hidden>
+        <p id="overlay-left-text"></p>
       </div>
-      <p id="p1Score"></p>
-      <button id="p1Ready">Not Ready</button>
-    </div>
-    <div id="rightPanel" class="right-panel">
-      <p id="p2Name"></p>
-      <div class="avatar-container">
-        <img id="p2Avatar" src="" alt="Player 2 Avatar" class="avatar">
+      <div id="overlay-right" hidden>
+        <p id="overlay-right-text"></p>
       </div>
-      <p id="p2Score"></p>
-      <button id="p2Ready">Not Ready</button>
     </div>
+    <image
+      id="crown"
+      src="static/images/crown.png"
+      alt="Crown"
+      class="crown"
+    ></image>
+    <image
+      id="draw"
+      src="static/images/draw.png"
+      alt="Draw"
+      class="draw"
+    ></image>
 
-    <div id="bottomleft" class="left-corner">
-      <button id="infoUrl">Copy URL</button>
-      <p id="infoWinCon">Win Condition: </p>
-      <p id="infoTime">Time: </p>
+    <div id="bingoContainer" class="bingo-container">
+      <div id="bingoBoardContainer" class="bingo-board center-panel"></div>
+
+      <div id="leftPanel" class="left-panel">
+        <p id="p1Name"></p>
+        <div class="avatar-container">
+          <img id="p1Avatar" src="" alt="Player 1 Avatar" class="avatar" />
+        </div>
+        <p id="p1Score"></p>
+        <button id="p1Ready">Not Ready</button>
+      </div>
+      <div id="rightPanel" class="right-panel">
+        <p id="p2Name"></p>
+        <div class="avatar-container">
+          <img id="p2Avatar" src="" alt="Player 2 Avatar" class="avatar" />
+        </div>
+        <p id="p2Score"></p>
+        <button id="p2Ready">Not Ready</button>
+      </div>
+
+      <div id="bottomleft" class="left-corner">
+        <button id="infoUrl">Copy URL</button>
+        <p id="infoWinCon">Win Condition:</p>
+        <p id="infoTime">Time:</p>
+      </div>
+      <button id="refreshBoard" class="refresh-button bottom-panel">
+        Refresh Board
+      </button>
+      <div id="bottomright" class="right-corner">
+        <p id="infoDifficulty">Difficulty:</p>
+        <p id="infoSize">Size:</p>
+        <p id="infoCategory">Category:</p>
+        <p id="infoFree">Free Questions Only:</p>
+      </div>
     </div>
-    <button id="refreshBoard" class="refresh-button bottom-panel">Refresh Board</button>
-    <div id="bottomright" class="right-corner">
-      <p id="infoDifficulty">Difficulty: </p>
-      <p id="infoSize">Size: </p>
-      <p id="infoCategory">Category: </p>
-      <p id="infoFree">Free Questions Only: </p>
-    </div>
-  </div>
+  </body>
 
-</body>
-
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
-<script type="module" src="static/js/bingo.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <script type="module" src="static/js/bingo.js"></script>
+</html>

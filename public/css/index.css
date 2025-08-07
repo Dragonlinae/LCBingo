@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
   height: 100vh;
   width: 100vw;
 }
@@ -44,7 +46,7 @@ body {
   outline: none;
 }
 
-#chat>button {
+#chat > button {
   background: #333;
   border: none;
   padding: 0 1rem;
@@ -63,11 +65,11 @@ body {
   scrollbar-width: none;
 }
 
-#messages>li {
+#messages > li {
   padding: 0.5rem 1rem;
 }
 
-#messages>li:nth-child(odd) {
+#messages > li:nth-child(odd) {
   background: #efefef;
 }
 

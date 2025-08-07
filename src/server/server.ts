@@ -8,7 +8,7 @@ const io = new Server(server, {
   connectionStateRecovery: {
     maxDisconnectionDuration: 2 * 60 * 1000,
     skipMiddlewares: true,
-  }
+  },
 });
 
 export { app, server, io };

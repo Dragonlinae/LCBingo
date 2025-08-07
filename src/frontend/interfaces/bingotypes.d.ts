@@ -1,5 +1,5 @@
 interface Board {
-  players: Player[] = [];
+  players: Player[];
   ready: boolean[];
   winner: number;
   size: number;
@@ -12,7 +12,7 @@ interface Board {
   endTime: Date;
   roomId: string;
   isBoardInitialized: boolean;
-  isBoardCompleted: boolean
+  isBoardCompleted: boolean;
 }
 
 interface Question {
@@ -27,4 +27,4 @@ interface Player {
   imageurl: string;
 }
 
-export type { Board, Question, Player }
+export type { Board, Question, Player };

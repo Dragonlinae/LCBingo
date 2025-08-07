@@ -11,5 +11,5 @@ export const pageController = {
   },
   renderGamePage: (_req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../views/game.html'));
-  }
+  },
 };

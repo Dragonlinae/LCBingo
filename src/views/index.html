@@ -1,86 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="static/css/core.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+  </head>
 
-<head>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="static/css/core.css">
-  <link rel="stylesheet" href="static/css/index.css">
-</head>
-
-<body>
-  <div id="outerContainer" class="two-col">
-
-    <div id="settingsPanel">
-      <form id="gameSetting" action="">
-        <label>Player 1
-          <input id="p1Name" autocomplete="off" placeholder="Leetcode Username" />
-        </label>
-        <label>Player 2
-          <input id="p2Name" autocomplete="off" placeholder="Leetcode Username" />
-        </label>
-        <label>Board Size (NxN)
-          <input id="sizeOption" type="number" min="1" max="5" value="3" />
-        </label>
-        <label>Free Questions Only
-          <input id="freeOption" type="checkbox" checked />
-        </label>
-        <label>Category
-          <select id="categoryOption">
-            <option value="algorithms" selected>Algorithms</option>
-            <option disabled value="database">Database</option>
-            <option disabled value="shell">Shell</option>
-            <option disabled value="concurrency">Concurrency</option>
-            <option disabled value="javascript">Javascript</option>
-            <option disabled value="pandas">Pandas</option>
-          </select>
-        </label>
-        <label id="difficulty">Difficulty:
-          <br>
-          <label>Easy
-            <input value="EASY" type="checkbox" checked />
+  <body>
+    <div id="outerContainer" class="two-col">
+      <div id="settingsPanel">
+        <form id="gameSetting" action="">
+          <label
+            >Player 1
+            <input
+              id="p1Name"
+              autocomplete="off"
+              placeholder="Leetcode Username"
+            />
           </label>
-          <label>Medium
-            <input value="MEDIUM" type="checkbox" checked />
+          <label
+            >Player 2
+            <input
+              id="p2Name"
+              autocomplete="off"
+              placeholder="Leetcode Username"
+            />
           </label>
-          <label>Hard
-            <input value="HARD" type="checkbox" checked />
+          <label
+            >Board Size (NxN)
+            <input id="sizeOption" type="number" min="1" max="5" value="3" />
           </label>
-        </label>
-        <label>Win Condition
-          <select id="winCondOption">
-            <option value="0" selected>Bingo</option>
-            <option value="1">Lockout</option>
-            <option value="2">Blackout</option>
-            <option value="3">Bingo + Lockout</option>
-          </select>
-        </label>
-        <label>Announce Game In Lobby
-          <input id="announceOption" type="checkbox" checked />
-        </label>
-        <button id="gameSettingSubmit">Start Game</button>
-      </form>
-      <form id="profileSetting" action="">
-        <label>Chat Username
-          <input id="chatUsername" autocomplete="off" placeholder="Leetcode Username" />
-        </label>
-        <label>Current Name:
-          <p id="username"></p>
-        </label>
-        <button id="changeUsername">Set Name</button>
-      </form>
+          <label
+            >Free Questions Only
+            <input id="freeOption" type="checkbox" checked />
+          </label>
+          <label
+            >Category
+            <select id="categoryOption">
+              <option value="algorithms" selected>Algorithms</option>
+              <option disabled value="database">Database</option>
+              <option disabled value="shell">Shell</option>
+              <option disabled value="concurrency">Concurrency</option>
+              <option disabled value="javascript">Javascript</option>
+              <option disabled value="pandas">Pandas</option>
+            </select>
+          </label>
+          <label id="difficulty"
+            >Difficulty:
+            <br />
+            <label
+              >Easy
+              <input value="EASY" type="checkbox" checked />
+            </label>
+            <label
+              >Medium
+              <input value="MEDIUM" type="checkbox" checked />
+            </label>
+            <label
+              >Hard
+              <input value="HARD" type="checkbox" checked />
+            </label>
+          </label>
+          <label
+            >Win Condition
+            <select id="winCondOption">
+              <option value="0" selected>Bingo</option>
+              <option value="1">Lockout</option>
+              <option value="2">Blackout</option>
+              <option value="3">Bingo + Lockout</option>
+            </select>
+          </label>
+          <label
+            >Announce Game In Lobby
+            <input id="announceOption" type="checkbox" checked />
+          </label>
+          <button id="gameSettingSubmit">Start Game</button>
+        </form>
+        <form id="profileSetting" action="">
+          <label
+            >Chat Username
+            <input
+              id="chatUsername"
+              autocomplete="off"
+              placeholder="Leetcode Username"
+            />
+          </label>
+          <label
+            >Current Name:
+            <p id="username"></p>
+          </label>
+          <button id="changeUsername">Set Name</button>
+        </form>
+      </div>
+      <div id="chatContainer">
+        <ul id="messages"></ul>
+        <form id="chat" action="">
+          <input id="chatInput" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
     </div>
-    <div id="chatContainer">
-      <ul id="messages"></ul>
-      <form id="chat" action="">
-        <input id="chatInput" autocomplete="off" /><button>Send</button>
-      </form>
-    </div>
-  </div>
-</body>
+  </body>
 
-
-<script src="/socket.io/socket.io.js"></script>
-<script type="module" src="static/js/index.js"></script>
-
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="static/js/index.js"></script>
 </html>
