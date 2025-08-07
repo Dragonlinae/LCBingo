@@ -203,7 +203,7 @@ body {}
   left: 0;
   top: 0;
   text-align: right;
-  color: blue;
+  color: #b91c1c;
 }
 
 #overlay-left::before {
@@ -214,7 +214,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: red;
+  background-color: #1d4ed8;
   z-index: -1;
 }
 
@@ -228,7 +228,7 @@ body {}
   width: 50vw;
   left: 50vw;
   top: 0;
-  color: red;
+  color: #1d4ed8;
 }
 
 #overlay-right::before {
@@ -239,7 +239,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: blue;
+  background-color: #b91c1c;
   z-index: -1;
 }
 
