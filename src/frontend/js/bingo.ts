@@ -100,21 +100,21 @@ function updateSquareColor(
     if (player1Time == Infinity && player2Time == Infinity) {
       square.style.backgroundColor = '';
     } else if (player1Time < Infinity && player2Time < Infinity) {
-      square.style.backgroundColor = '#EE22FF';
+      square.style.backgroundColor = '#a855f7';
     } else if (player1Time < Infinity) {
-      square.style.backgroundColor = '#FF6666';
+      square.style.backgroundColor = '#f87171';
     } else if (player2Time < Infinity) {
-      square.style.backgroundColor = '#6666FF';
+      square.style.backgroundColor = '#7dd3fc';
     }
   } else {
     if (player1Time == Infinity && player2Time == Infinity) {
       square.style.backgroundColor = '';
     } else if (player1Time < player2Time) {
-      square.style.backgroundColor = '#FF6666';
+      square.style.backgroundColor = '#f87171';
     } else if (player1Time > player2Time) {
-      square.style.backgroundColor = '#6666FF';
+      square.style.backgroundColor = '#7dd3fc';
     } else {
-      square.style.backgroundColor = '#EE22FF';
+      square.style.backgroundColor = '#a855f7';
     }
   }
 }
