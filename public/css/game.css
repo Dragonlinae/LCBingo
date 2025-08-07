@@ -17,7 +17,7 @@ body {}
   width: min(50vw, 70vh);
   height: min(50vw, 70vh);
   margin: 10px auto;
-  grid-gap: 4px;
+  grid-gap: 8px;
 }
 
 .bingo-square {
