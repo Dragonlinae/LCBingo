@@ -1,8 +1,6 @@
 import { io } from './server/server.js';
 import * as repl from 'repl';
-import * as app from './app';
-
-console.log(app);
+import './app';
 
 const replServer = repl.start({
   prompt: 'SocketIO> ',
