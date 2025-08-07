@@ -1,5 +1,4 @@
-body {
-}
+body {}
 
 .bingo-container {
   display: grid;
@@ -18,6 +17,7 @@ body {
   width: min(50vw, 70vh);
   height: min(50vw, 70vh);
   margin: 10px auto;
+  grid-gap: 4px;
 }
 
 .bingo-square {
@@ -27,7 +27,6 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   color: #333;
   container-type: inline-size;
-  margin: 1vw;
   overflow-wrap: break-word;
   padding: 1vw;
   text-align: center;
