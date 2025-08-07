@@ -63,7 +63,7 @@ socket.on(
 
 socket.on('win', (winner, endTime) => {
   board.winner = winner;
-  board.endTime = endTime;
+  board.endTime = new Date(endTime);
   board.isBoardCompleted = true;
   alertWin(winner);
 });
