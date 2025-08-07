@@ -114,9 +114,9 @@ class Question implements BingoInterfaces.Question {
  * Represents a filter for LeetCode questions, allowing selection by category, difficulty, and premium status.
  */
 class QuestionFilter {
-  category?: string;
-  difficulty?: string[];
-  isFreeOnly?: boolean;
+  category: string;
+  difficulty: string[];
+  isFreeOnly: boolean;
 
   /**
    * Creates a new QuestionFilter instance.
@@ -192,6 +192,25 @@ class Board implements BingoInterfaces.Board {
   static actionIntervalTime = 5000;
 
   constructor(player1: Player, player2: Player, size: number, filters: QuestionFilter = new QuestionFilter(), winCondition: number = Board.WinConditions.BINGO) {
+    if (size < 1 || size > 5) {
+      throw new Error("Board size must be between 1 and 5.");
+    }
+    if (winCondition < 0 || winCondition > 3) {
+      throw new Error("Invalid win condition specified.");
+    }
+    if (player1.name === player2.name) {
+      throw new Error("Players must have different names.");
+    }
+    if (filters.difficulty.length === 0) {
+      throw new Error("At least one difficulty must be specified in the filters.");
+    }
+    if (filters.category !== "algorithms") {
+      throw new Error("Only the 'algorithms' category is supported for now.");
+    }
+    if (!filters.difficulty.every(d => ["EASY", "MEDIUM", "HARD"].includes(d))) {
+      throw new Error("Invalid difficulty specified in the filters. Valid difficulties are: EASY, MEDIUM, HARD.");
+    }
+
     this.size = size;
     this.questions = [];
     this.timestamp = [];
@@ -511,6 +530,9 @@ class Player {
       }
       return response.json();
     }).then(data => {
+      if (data.data.matchedUser === null) {
+        throw new Error(`User ${this.name} not found.`);
+      }
       this.imageurl = data.data.matchedUser.profile.userAvatar
       return data.data.matchedUser.profile.userAvatar;
     });

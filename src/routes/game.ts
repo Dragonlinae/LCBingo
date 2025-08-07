@@ -96,8 +96,14 @@ async function newRoom(board: Board): Promise<string> {
     }
   }
   board.roomId = nanoid();
-  await board.players[0].getImageUrl();
-  await board.players[1].getImageUrl();
+  try {
+    await board.players[0].getImageUrl();
+    await board.players[1].getImageUrl();
+  }
+  catch (error) {
+    console.error('Error fetching player images:', error);
+    throw new Error('Failed to fetch player images. Please check player names.');
+  }
   console.log(board);
   rooms.set(board.roomId, board);
   return board.roomId;
