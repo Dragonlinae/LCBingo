@@ -29,7 +29,7 @@ body {}
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  
+
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -218,7 +218,7 @@ body {}
   left: 0;
   top: 0;
   text-align: right;
-  color: #b91c1c;
+  color: var(--darkred);
 }
 
 #overlay-left::before {
@@ -229,7 +229,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: #1d4ed8;
+  background-color: var(--darkblue);
   z-index: -1;
 }
 
@@ -243,7 +243,7 @@ body {}
   width: 50vw;
   left: 50vw;
   top: 0;
-  color: #1d4ed8;
+  color: var(--darkblue);
 }
 
 #overlay-right::before {
@@ -254,7 +254,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: #b91c1c;
+  background-color: var(--darkred);
   z-index: -1;
 }
 

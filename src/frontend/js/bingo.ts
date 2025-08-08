@@ -103,22 +103,22 @@ function updateSquare(
       square.style.background = '';
     } else if (player1Time < Infinity && player2Time < Infinity) {
       square.style.background =
-        'repeating-linear-gradient(45deg, #f87171, #f87171 30px, #7dd3fc 30px, #7dd3fc 60px);';
+        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px);';
     } else if (player1Time < Infinity) {
-      square.style.background = '#f87171';
+      square.style.background = 'var(--lightred)';
     } else if (player2Time < Infinity) {
-      square.style.background = '#7dd3fc';
+      square.style.background = 'var(--lightblue)';
     }
   } else {
     if (player1Time == Infinity && player2Time == Infinity) {
       square.style.background = '';
     } else if (player1Time < player2Time) {
-      square.style.background = '#f87171';
+      square.style.background = 'var(--lightred)';
     } else if (player1Time > player2Time) {
-      square.style.background = '#7dd3fc';
+      square.style.background = 'var(--lightblue)';
     } else {
       square.style.background =
-        'repeating-linear-gradient(45deg, #f87171, #f87171 30px, #7dd3fc 30px, #7dd3fc 60px);';
+        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px);';
     }
   }
 
