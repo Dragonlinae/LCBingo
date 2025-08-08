@@ -1,5 +1,6 @@
 import type { Board } from '../interfaces/bingotypes.d.ts';
 import type { Socket } from 'socket.io-client';
+import { formatTimestamp } from './util.js';
 
 declare var io: (url: string | undefined) => Socket;
 declare var JSConfetti: any;
@@ -49,11 +50,12 @@ socket.on('board', (_board: Board) => {
 socket.on(
   'update square',
   (questionIndex: number, playerIndex: number, timestamp: number) => {
+    const squareHtml = document.getElementById('bingoBoardContainer')!.children[
+      questionIndex
+    ] as HTMLElement;
     board.timestamp[questionIndex][playerIndex] = timestamp;
-    updateSquareColor(
-      document.getElementById('bingoBoardContainer')!.children[
-        questionIndex
-      ] as HTMLElement,
+    updateSquare(
+      squareHtml,
       board.timestamp[questionIndex][0],
       board.timestamp[questionIndex][1],
       board.winCondition,
@@ -90,7 +92,7 @@ p2Ready.onclick = function () {
   socket.emit('player ready', 1, board.ready[1]);
 };
 
-function updateSquareColor(
+function updateSquare(
   square: HTMLElement,
   player1Time: number,
   player2Time: number,
@@ -117,6 +119,16 @@ function updateSquareColor(
       square.style.backgroundColor = '#a855f7';
     }
   }
+
+  // update square timestamp
+  const bestTime = Math.min(player1Time, player2Time) * 1000;
+  console.log(bestTime);
+  const ts = square.getElementsByClassName('timestamp')[0];
+  console.log(square, '??', ts);
+  if (ts && bestTime < Infinity) {
+    ts.classList.remove('hidden');
+    ts.textContent = formatTimestamp(bestTime - board.startTime.getTime());
+  }
 }
 
 function setupBoard() {
@@ -139,7 +151,10 @@ function setupBoard() {
     square.onclick = () => {
       window.open(board.questions[i].url, '_blank');
     };
-    updateSquareColor(
+    const timestamp = document.createElement('p');
+    timestamp.classList.add('hidden', 'timestamp');
+    square.append(timestamp);
+    updateSquare(
       square,
       board.timestamp[i][0],
       board.timestamp[i][1],

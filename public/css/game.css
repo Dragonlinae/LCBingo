@@ -1,5 +1,9 @@
 body {}
 
+.hidden {
+  display: none !important;
+}
+
 .bingo-container {
   display: grid;
   width: 100%;
@@ -21,6 +25,11 @@ body {}
 }
 
 .bingo-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -47,6 +56,12 @@ body {}
   line-clamp: 3;
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
+}
+
+.bingo-square .timestamp {
+  font-size: 10cqw;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
 }
 
 .bingo-square:hover {
