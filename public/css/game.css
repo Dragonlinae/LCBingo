@@ -218,7 +218,7 @@ body {}
   left: 0;
   top: 0;
   text-align: right;
-  color: #1d4ed8;
+  color: #b91c1c;
 }
 
 #overlay-left::before {
@@ -243,7 +243,7 @@ body {}
   width: 50vw;
   left: 50vw;
   top: 0;
-  color: #b91c1c;
+  color: #1d4ed8;
 }
 
 #overlay-right::before {

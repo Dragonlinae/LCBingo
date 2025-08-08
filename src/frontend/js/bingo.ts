@@ -100,23 +100,25 @@ function updateSquare(
 ) {
   if (winCon == 2) {
     if (player1Time == Infinity && player2Time == Infinity) {
-      square.style.backgroundColor = '';
+      square.style.background = '';
     } else if (player1Time < Infinity && player2Time < Infinity) {
-      square.style.backgroundColor = '#a855f7';
+      square.style.background =
+        'repeating-linear-gradient(45deg, #f87171, #f87171 30px, #7dd3fc 30px, #7dd3fc 60px);';
     } else if (player1Time < Infinity) {
-      square.style.backgroundColor = '#f87171';
+      square.style.background = '#f87171';
     } else if (player2Time < Infinity) {
-      square.style.backgroundColor = '#7dd3fc';
+      square.style.background = '#7dd3fc';
     }
   } else {
     if (player1Time == Infinity && player2Time == Infinity) {
-      square.style.backgroundColor = '';
+      square.style.background = '';
     } else if (player1Time < player2Time) {
-      square.style.backgroundColor = '#f87171';
+      square.style.background = '#f87171';
     } else if (player1Time > player2Time) {
-      square.style.backgroundColor = '#7dd3fc';
+      square.style.background = '#7dd3fc';
     } else {
-      square.style.backgroundColor = '#a855f7';
+      square.style.background =
+        'repeating-linear-gradient(45deg, #f87171, #f87171 30px, #7dd3fc 30px, #7dd3fc 60px);';
     }
   }
 
