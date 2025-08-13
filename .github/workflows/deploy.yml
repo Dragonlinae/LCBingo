@@ -1,0 +1,32 @@
+name: Remote Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Deploy to remote server
+        run: |
+          ssh ${{ secrets.SSH_TARGET }} << 'EOF'
+            cd ${{ secrets.SSH_REPO_PATH }}
+            git pull
+            npm install
+            npm run build
+            supervisorctl restart lcbingo
+          EOF
