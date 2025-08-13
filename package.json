@@ -12,7 +12,7 @@
     "build": "concurrently \"npm run build:backend\" \"npm run build:frontend\"",
     "build:backend": "tsc --project ./tsconfig.build.json",
     "build:frontend": "tsc --project ./src/frontend/tsconfig.json",
-    "postbuild": "cpy src/views/* dist/views --flat",
+    "postbuild": "cp -r src/views dist/",
     "prettier": "prettier . --write",
     "start": "node ./dist/app.js"
   },
@@ -20,7 +20,6 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
     "concurrently": "^9.2.0",
-    "cpy-cli": "^5.0.0",
     "dotenv": "^17.2.1",
     "prettier": "3.6.2",
     "repl": "^0.1.3",
