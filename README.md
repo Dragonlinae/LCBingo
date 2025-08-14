@@ -1,6 +1,6 @@
 # LCBingo
 
-[View demo](lcbingo.dragonlinae.com)
+[View demo](https://lcbingo.dragonlinae.com)
 
 ## About
 
