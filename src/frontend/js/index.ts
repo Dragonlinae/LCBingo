@@ -56,7 +56,7 @@ gameSetting.addEventListener('submit', (e) => {
     .map((el) => el.value);
 
   console.log(difficulties);
-  if (difficulties.length == 0) {
+  if (difficulties.length === 0) {
     addMessage('SYSTEM', 'Must select a difficulty', true);
     return;
   }

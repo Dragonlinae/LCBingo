@@ -42,7 +42,7 @@ socket.on('board', (_board: Board) => {
     setupBoard();
     introReveal();
   }
-  if (board.winner != -1) {
+  if (board.winner !== -1) {
     alertWin(board.winner);
   }
 });
@@ -73,10 +73,10 @@ socket.on('win', (winner, endTime) => {
 const p1Ready = document.getElementById('p1Ready') as HTMLButtonElement;
 const p2Ready = document.getElementById('p2Ready') as HTMLButtonElement;
 socket.on('player ready', (player, readyState) => {
-  if (player == 0) {
+  if (player === 0) {
     p1Ready.textContent = readyState ? 'Ready' : 'Not Ready';
     board.ready[0] = readyState;
-  } else if (player == 1) {
+  } else if (player === 1) {
     p2Ready.textContent = readyState ? 'Ready' : 'Not Ready';
     board.ready[1] = readyState;
   }
@@ -98,19 +98,19 @@ function updateSquare(
   player2Time: number,
   winCon: number,
 ) {
-  if (winCon == 2) {
-    if (player1Time == Infinity && player2Time == Infinity) {
+  if (winCon === 2) {
+    if (player1Time === Infinity && player2Time === Infinity) {
       square.style.background = '';
     } else if (player1Time < Infinity && player2Time < Infinity) {
       square.style.background =
-        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px);';
+        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px)';
     } else if (player1Time < Infinity) {
       square.style.background = 'var(--lightred)';
     } else if (player2Time < Infinity) {
       square.style.background = 'var(--lightblue)';
     }
   } else {
-    if (player1Time == Infinity && player2Time == Infinity) {
+    if (player1Time === Infinity && player2Time === Infinity) {
       square.style.background = '';
     } else if (player1Time < player2Time) {
       square.style.background = 'var(--lightred)';
@@ -118,7 +118,7 @@ function updateSquare(
       square.style.background = 'var(--lightblue)';
     } else {
       square.style.background =
-        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px);';
+        'repeating-linear-gradient(45deg, var(--lightred), var(--lightred) 30px, var(--lightblue) 30px, var(--lightblue) 60px)';
     }
   }
 
@@ -175,10 +175,10 @@ function setupPanels() {
   const winCondMap = ['Bingo', 'Lockout', 'Blackout', 'Bingo + Lockout'];
   const p1Name = document.getElementById('p1Name')!;
   const p1Avatar = document.getElementById('p1Avatar')! as HTMLImageElement;
-  // const p1Score = document.getElementById("p1Score")!;
+  // const p1Score = document.getElementById('p1Score')!;
   const p2Name = document.getElementById('p2Name')!;
   const p2Avatar = document.getElementById('p2Avatar')! as HTMLImageElement;
-  // const p2Score = document.getElementById("p2Score")!;
+  // const p2Score = document.getElementById('p2Score')!;
 
   const infoDifficulty = document.getElementById('infoDifficulty')!;
   const infoWinCon = document.getElementById('infoWinCon')!;
@@ -210,8 +210,8 @@ function setupPanels() {
   infoCategory.textContent = 'Category: ' + board.filters.categorySlug;
   infoFree.textContent =
     'Access: ' +
-    (board.filters.filtersV2.premiumFilter.premiumStatus.length == 1 &&
-    board.filters.filtersV2.premiumFilter.premiumStatus[0] == 'NOT_PREMIUM'
+    (board.filters.filtersV2.premiumFilter.premiumStatus.length === 1 &&
+    board.filters.filtersV2.premiumFilter.premiumStatus[0] === 'NOT_PREMIUM'
       ? 'Free'
       : 'Premium');
 
@@ -250,7 +250,7 @@ function alertWin(winner: number) {
         { once: true },
       );
     }
-  } else if (winner == -2) {
+  } else if (winner === -2) {
     animateDraw();
   }
   const refreshButton = document.getElementById(

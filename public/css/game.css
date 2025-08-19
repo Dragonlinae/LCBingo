@@ -30,11 +30,11 @@ body {}
   justify-content: center;
   gap: 8px;
 
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  background-color: var(--mg);
+  border: 1px solid var(--mg-dark);
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  color: #333;
+  box-shadow: 0 0 5px var(--mg);
+  color: var(--fg);
   container-type: inline-size;
   overflow-wrap: break-word;
   padding: 1vw;
@@ -45,9 +45,11 @@ body {}
   aspect-ratio: 1;
   cursor: help;
   overflow: hidden;
-  transition:
+  /* transition:
     background-color 3s,
-    color 3s;
+    color 3s; */
+  /*Removed transition, as causes issues with universal transition
+    and causes massive color flickering for some weird reason*/
 }
 
 .bingo-square .square-text {
@@ -60,12 +62,12 @@ body {}
 
 .bingo-square .timestamp {
   font-size: 10cqw;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--mg-verydark);
   margin: 0;
 }
 
 .bingo-square:hover {
-  background-color: #898989;
+  background-color: var(--mg-dark);
   cursor: pointer;
 }
 
@@ -218,7 +220,7 @@ body {}
   left: 0;
   top: 0;
   text-align: right;
-  color: var(--darkred);
+  color: var(--red);
 }
 
 #overlay-left::before {
@@ -229,7 +231,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: var(--darkblue);
+  background-color: var(--blue);
   z-index: -1;
 }
 
@@ -243,7 +245,7 @@ body {}
   width: 50vw;
   left: 50vw;
   top: 0;
-  color: var(--darkblue);
+  color: var(--blue);
 }
 
 #overlay-right::before {
@@ -254,7 +256,7 @@ body {}
   width: 200%;
   height: 100%;
   transform: skewX(-15deg);
-  background-color: var(--darkred);
+  background-color: var(--red);
   z-index: -1;
 }
 

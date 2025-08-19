@@ -122,9 +122,9 @@ class QuestionFilter {
   /**
    * Creates a new QuestionFilter instance.
    *
-   * @param category - The category of the questions (default is "algorithms").
+   * @param category - The category of the questions (default is 'algorithms').
    * @param difficulty - The difficulty levels to filter by (default is
-   * ["EASY", "MEDIUM", "HARD"]).
+   * ['EASY', 'MEDIUM', 'HARD']).
    * @param isFreeOnly - Whether to filter for free questions only
    * (default is true).
    */
@@ -218,7 +218,7 @@ class Board implements BingoInterfaces.Board {
       );
     }
     if (filters.category !== 'algorithms') {
-      throw new Error("Only the 'algorithms' category is supported for now.");
+      throw new Error('Only the "algorithms" category is supported for now.');
     }
     if (
       !filters.difficulty.every((d) => ['EASY', 'MEDIUM', 'HARD'].includes(d))
@@ -331,7 +331,7 @@ class Board implements BingoInterfaces.Board {
               (timestamp[0] === Infinity && timestamp[1] === Infinity ? 1 : 0)
             );
           }, 0);
-          if (unanswered == 0 || bingoPlayerTimes[0] < Infinity) {
+          if (unanswered === 0 || bingoPlayerTimes[0] < Infinity) {
             this.winner = -2;
           }
           this.winner = -1;
@@ -340,7 +340,7 @@ class Board implements BingoInterfaces.Board {
         }
         if (
           this.winCondition === Board.WinConditions.BINGO ||
-          this.winner != -2
+          this.winner !== -2
         ) {
           break;
         }
@@ -349,20 +349,20 @@ class Board implements BingoInterfaces.Board {
         const player1SolvedLockout = this.timestamp.reduce((acc, timestamp) => {
           return (
             acc +
-            (timestamp[0] != Infinity && timestamp[0] <= timestamp[1] ? 1 : 0)
+            (timestamp[0] !== Infinity && timestamp[0] <= timestamp[1] ? 1 : 0)
           );
         }, 0);
         const player2SolvedLockout = this.timestamp.reduce((acc, timestamp) => {
           return (
             acc +
-            (timestamp[1] != Infinity && timestamp[1] <= timestamp[0] ? 1 : 0)
+            (timestamp[1] !== Infinity && timestamp[1] <= timestamp[0] ? 1 : 0)
           );
         }, 0);
         if (
           player1SolvedLockout > (boardsize * boardsize) / 2 ||
           player2SolvedLockout > (boardsize * boardsize) / 2
         ) {
-          if (player1SolvedLockout == player2SolvedLockout) {
+          if (player1SolvedLockout === player2SolvedLockout) {
             this.winner = -2;
           }
           this.winner = player1SolvedLockout > player2SolvedLockout ? 0 : 1;
@@ -460,7 +460,7 @@ class Board implements BingoInterfaces.Board {
               (timestamp[0] === Infinity && timestamp[1] === Infinity ? 1 : 0)
             );
           }, 0);
-          if (unanswered == 0 || bingoLockoutPlayerTimes[0] < Infinity) {
+          if (unanswered === 0 || bingoLockoutPlayerTimes[0] < Infinity) {
             this.winner = -2;
           }
           this.winner = -1;
@@ -475,7 +475,7 @@ class Board implements BingoInterfaces.Board {
             (acc, timestamp) => {
               return (
                 acc +
-                (timestamp[0] != Infinity && timestamp[0] <= timestamp[1]
+                (timestamp[0] !== Infinity && timestamp[0] <= timestamp[1]
                   ? 1
                   : 0)
               );
@@ -486,7 +486,7 @@ class Board implements BingoInterfaces.Board {
             (acc, timestamp) => {
               return (
                 acc +
-                (timestamp[1] != Infinity && timestamp[1] <= timestamp[0]
+                (timestamp[1] !== Infinity && timestamp[1] <= timestamp[0]
                   ? 1
                   : 0)
               );
@@ -497,7 +497,7 @@ class Board implements BingoInterfaces.Board {
             player1SolvedLockout > (boardsize * boardsize) / 2 ||
             player2SolvedLockout > (boardsize * boardsize) / 2
           ) {
-            if (player1SolvedLockout == player2SolvedLockout) {
+            if (player1SolvedLockout === player2SolvedLockout) {
               this.winner = -2;
             }
             this.winner = player1SolvedLockout > player2SolvedLockout ? 0 : 1;
@@ -510,7 +510,7 @@ class Board implements BingoInterfaces.Board {
         this.winner = -2;
         break;
     }
-    if (this.winner != -1) {
+    if (this.winner !== -1) {
       this.isBoardCompleted = true;
       this.endTime = new Date();
     }
@@ -687,7 +687,7 @@ class Player {
   }
 
   async getImageUrl(): Promise<string> {
-    if (this.imageurl != '') {
+    if (this.imageurl !== '') {
       return this.imageurl;
     }
     return await fetch(`https://leetcode.com/graphql/`, {

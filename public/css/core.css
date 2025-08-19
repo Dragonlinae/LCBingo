@@ -1,23 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-:root {
-  --darkred: #b91c1c;
-  --darkblue: #1d4ed8;
-  --lightred: #f87171;
-  --lightblue: #7dd3fc;
-  --verylightred: #fecaca;
-  --verylightblue: #e0f2fe;
+:root,
+:root[data-theme='light'] {
+  --warningred: oklch(60% 0.25 30);
+
+  --red: oklch(53.657% 0.22019 29.223);
+  --darkred: oklch(from var(--red) 30% c h);
+  --lightred: oklch(from var(--red) 80% c h);
+  --verylightred: oklch(from var(--red) 95% 0.1 h);
+  --blue: oklch(50% 0.28043 263.839);
+  --darkblue: oklch(from var(--blue) 30% c h);
+  --lightblue: oklch(from var(--blue) 80% c h);
+  --verylightblue: oklch(from var(--blue) 95% 0.1 h);
+  --bg: oklch(100% 0 0);
+  --mg: oklch(90% 0 0);
+  --mg-dark: oklch(70% 0 0);
+  --mg-verydark: oklch(40% 0 0);
+  --fg: oklch(0% 0 0);
+
+
+  background: var(--bg);
+  color: var(--fg);
 }
 
-input {
+* {
+  transition:
+    color 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+:root[data-theme='dark'] {
+  --red: oklch(50% 0.25768 29.223);
+  --darkred: oklch(from var(--red) 80% c h);
+  --lightred: oklch(from var(--red) 30% c h);
+  --verylightred: oklch(from var(--red) 20% c h);
+  --blue: oklch(50% 0.28043 263.839);
+  --darkblue: oklch(from var(--blue) 80% c h);
+  --lightblue: oklch(from var(--blue) 30% c h);
+  --verylightblue: oklch(from var(--blue) 20% c h);
+  --bg: oklch(0% 0 0);
+  --mg: oklch(30% 0 0);
+  --mg-dark: oklch(50% 0 0);
+  --mg-verydark: oklch(70% 0 0);
+  --fg: oklch(100% 0 0);
+}
+
+input,
+select {
   border-radius: 9999px;
   border-width: 0;
-  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.15));
+  filter: drop-shadow(0 2px 2px var(--mg));
   padding: 5px;
+  background: var(--bg);
+  color: var(--fg);
+  accent-color: var(--lightblue);
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
 }
 
@@ -26,4 +66,109 @@ button {
   border-radius: .5rem;
   padding: 1rem;
   height: min-content;
+  background-color: var(--mg);
+  color: var(--fg);
+}
+
+#darkModeToggle {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  right: 0;
+  top: 0;
+  padding: 0.5rem;
+  background: var(--fg);
+  transition: all 0.5s ease-in-out;
+}
+
+#darkModeIcon {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  left: 0.5rem;
+  top: 0.5rem;
+  border-radius: 1rem;
+  background: var(--mg);
+  transform-origin: center center;
+  transition: all 0.5s ease-in-out;
+}
+
+#darkModeIcon::after {
+  content: '';
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 1rem;
+  top: 0rem;
+  border-radius: 1rem;
+  background: var(--fg);
+  transform-origin: top right;
+  transition: all 0.5s ease-in-out;
+}
+
+#darkModeIcon .ray {
+  position: absolute;
+  scale: 0;
+  width: 0;
+  height: 0;
+  top: 0.5rem;
+  left: 0.5rem;
+  border-radius: 0;
+  background: transparent;
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid var(--mg);
+  border-right: 0.5rem solid transparent;
+  transform-origin: center center;
+  transition: all 0.5s ease-in-out;
+}
+
+[data-theme='dark'] {
+  #darkModeIcon {
+    scale: 0.7;
+  }
+
+  #darkModeIcon::after {
+    scale: 0;
+  }
+
+  #darkModeIcon .ray:nth-child(1) {
+    scale: 1;
+    transform: rotate(0deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(2) {
+    scale: 1;
+    transform: rotate(45deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(3) {
+    scale: 1;
+    transform: rotate(90deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(4) {
+    scale: 1;
+    transform: rotate(135deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(5) {
+    scale: 1;
+    transform: rotate(180deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(6) {
+    scale: 1;
+    transform: rotate(225deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(7) {
+    scale: 1;
+    transform: rotate(270deg) translateX(1.75rem);
+  }
+
+  #darkModeIcon .ray:nth-child(8) {
+    scale: 1;
+    transform: rotate(315deg) translateX(1.75rem);
+  }
 }

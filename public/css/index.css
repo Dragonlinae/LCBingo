@@ -19,7 +19,7 @@ body {
 }
 
 #chat {
-  background: rgba(0, 0, 0, 0.15);
+  background: oklch(from var(--fg) l c h / 0.15);
   padding: 0.25rem;
   bottom: 0;
   left: 0;
@@ -45,13 +45,13 @@ body {
 
 #chat>button {
   height: auto;
-  background: #333;
+  background: var(--fg);
   border: none;
   padding: 0 1rem;
   margin: 0.25rem;
   border-radius: 3px;
   outline: none;
-  color: #fff;
+  color: var(--bg);
 }
 
 #messages {
@@ -68,11 +68,11 @@ body {
 }
 
 #messages>li:nth-child(odd) {
-  background: #efefef;
+  background: var(--mg);
 }
 
 .system-message {
-  color: rgb(252, 67, 0);
+  color: var(--warningred);
   font-weight: bold;
 }
 
@@ -84,7 +84,7 @@ body {
   width: 20rem;
   height: auto;
   gap: 1rem;
-  border-right: #eee solid 2px;
+  border-right: var(--mg) solid 2px;
 }
 
 #gameSetting {
@@ -95,7 +95,7 @@ body {
   row-gap: 1rem;
   padding: 1rem;
   filter: drop-shadow(0 2px 3px var(--lightblue));
-  background: #fff;
+  background: var(--bg);
   border-radius: .5rem;
 }
 
@@ -112,7 +112,7 @@ body {
   row-gap: 1rem;
   padding: 1rem;
   filter: drop-shadow(0 2px 3px var(--lightred));
-  background: #fff;
+  background: var(--bg);
   border-radius: .5rem;
 }
 
