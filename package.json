@@ -15,7 +15,8 @@
     "postbuild": "cp -r src/views dist/",
     "prettier": "prettier . --write",
     "start": "node ./dist/app.js",
-    "test": "vitest"
+    "test": "vitest run",
+    "devtest": "vitest"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
