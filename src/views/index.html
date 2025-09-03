@@ -5,22 +5,15 @@
     <title>Home</title>
     <link rel="stylesheet" href="static/css/core.css" />
     <link rel="stylesheet" href="static/css/index.css" />
+    <script>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    </script>
   </head>
 
   <body>
-    <button id="darkModeToggle">
-      <div id="darkModeIcon">
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-        <span class="ray"></span>
-      </div>
-    </button>
-
     <div id="outerContainer" class="two-col">
       <div id="settingsPanel">
         <form id="gameSetting" action="">
@@ -117,5 +110,4 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script type="module" src="static/js/index.js"></script>
-  <script type="module" src="static/js/overlay.js"></script>
 </html>

@@ -76,6 +76,8 @@ button {
   height: 3rem;
   right: 0;
   top: 0;
+  border: none;
+  border-radius: .5rem;
   padding: 0.5rem;
   background: var(--fg);
   transition: all 0.5s ease-in-out;

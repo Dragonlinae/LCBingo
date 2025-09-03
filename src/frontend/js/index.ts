@@ -1,4 +1,8 @@
 import type { Socket } from 'socket.io-client';
+import createThemeToggle from './utils/themes.js';
+import addMessage from './utils/messages.js';
+
+createThemeToggle();
 
 declare var io: (url: string | undefined) => Socket;
 
@@ -14,7 +18,7 @@ chatForm.addEventListener('submit', (e) => {
       socket.emit('chat message', chatInput.value, username.textContent);
       chatInput.value = '';
     } else {
-      addMessage('SYSTEM', 'Please set username first', true);
+      addMessage('SYSTEM', 'Please set username first', messages, true);
     }
   }
 });
@@ -57,12 +61,17 @@ gameSetting.addEventListener('submit', (e) => {
 
   console.log(difficulties);
   if (difficulties.length === 0) {
-    addMessage('SYSTEM', 'Must select a difficulty', true);
+    addMessage('SYSTEM', 'Must select a difficulty', messages, true);
     return;
   }
 
   if (!(p1Name.value && p2Name.value)) {
-    addMessage('SYSTEM', 'Missing Leetcode username of players', true);
+    addMessage(
+      'SYSTEM',
+      'Missing Leetcode username of players',
+      messages,
+      true,
+    );
     return;
   }
 
@@ -80,40 +89,19 @@ gameSetting.addEventListener('submit', (e) => {
   );
 });
 
-function addMessage(
-  name: string,
-  msg: string,
-  isSystem: boolean = false,
-  hyperlink: string | null = null,
-) {
-  const item = document.createElement('li');
-  if (isSystem) {
-    item.classList.add('system-message');
-  }
-  item.textContent = name + ': ' + msg;
-  if (hyperlink) {
-    item.onclick = () => {
-      window.location.href = hyperlink;
-    };
-    item.style.cursor = 'pointer';
-    item.style.textDecoration = 'underline';
-  }
-  messages.appendChild(item);
-  messages.scrollTop = messages.scrollHeight;
-}
-
 socket.on('chat message', (msg, name) => {
-  addMessage(name, msg);
+  addMessage(name, msg, messages);
 });
 
 socket.on('system message', (msg) => {
-  addMessage('SYSTEM', msg, true);
+  addMessage('SYSTEM', msg, messages, true);
 });
 
 socket.on('game announce', (p1Name, p2Name, roomId) => {
   addMessage(
     'GAME ANNOUNCEMENT',
     `${p1Name} vs ${p2Name}. Click to join!`,
+    messages,
     true,
     `/game?roomId=${roomId}`,
   );

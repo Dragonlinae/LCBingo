@@ -391,121 +391,6 @@ class Board implements BingoInterfaces.Board {
           this.winner = -1;
         }
         break;
-      case Board.WinConditions.BINGOLOCKOUT:
-        // Lockout only checks if grid is full or if both players
-        // bingo at same time
-        // Bingo check
-        let bingoLockoutPlayerTimes = [Infinity, Infinity];
-        for (let player = 0; player < 2; player++) {
-          const minRowTime = Math.min(
-            ...Array.from({ length: boardsize }, (_, row) => {
-              return Math.max(
-                ...this.timestamp
-                  .slice(row * boardsize, (row + 1) * boardsize)
-                  .map((timestamp) =>
-                    timestamp[player] <= timestamp[1 - player]
-                      ? timestamp[player]
-                      : Infinity,
-                  ),
-              );
-            }),
-          );
-          const minColTime = Math.min(
-            ...Array.from({ length: boardsize }, (_, col) => {
-              return Math.max(
-                ...this.timestamp
-                  .filter((_, index) => index % boardsize === col)
-                  .map((timestamp) =>
-                    timestamp[player] <= timestamp[1 - player]
-                      ? timestamp[player]
-                      : Infinity,
-                  ),
-              );
-            }),
-          );
-          const minDiag1Time = Math.max(
-            ...this.timestamp
-              .filter((_, index) => index % (boardsize + 1) === 0)
-              .map((timestamp) =>
-                timestamp[player] <= timestamp[1 - player]
-                  ? timestamp[player]
-                  : Infinity,
-              ),
-          );
-          const minDiag2Time = Math.max(
-            ...this.timestamp
-              .filter(
-                (_, index) =>
-                  index % (boardsize - 1) === 0 &&
-                  index > 0 &&
-                  index < boardsize * boardsize - 1,
-              )
-              .map((timestamp) =>
-                timestamp[player] <= timestamp[1 - player]
-                  ? timestamp[player]
-                  : Infinity,
-              ),
-          );
-          bingoLockoutPlayerTimes[player] = Math.min(
-            minRowTime,
-            minColTime,
-            minDiag1Time,
-            minDiag2Time,
-          );
-        }
-        if (bingoLockoutPlayerTimes[0] === bingoLockoutPlayerTimes[1]) {
-          const unanswered = this.timestamp.reduce((acc, timestamp) => {
-            return (
-              acc +
-              (timestamp[0] === Infinity && timestamp[1] === Infinity ? 1 : 0)
-            );
-          }, 0);
-          if (unanswered === 0 || bingoLockoutPlayerTimes[0] < Infinity) {
-            this.winner = -2;
-          }
-          this.winner = -1;
-        } else {
-          this.winner =
-            bingoLockoutPlayerTimes[0] < bingoLockoutPlayerTimes[1] ? 0 : 1;
-        }
-
-        // Lockout check
-        if (this.winner === -2) {
-          const player1SolvedLockout = this.timestamp.reduce(
-            (acc, timestamp) => {
-              return (
-                acc +
-                (timestamp[0] !== Infinity && timestamp[0] <= timestamp[1]
-                  ? 1
-                  : 0)
-              );
-            },
-            0,
-          );
-          const player2SolvedLockout = this.timestamp.reduce(
-            (acc, timestamp) => {
-              return (
-                acc +
-                (timestamp[1] !== Infinity && timestamp[1] <= timestamp[0]
-                  ? 1
-                  : 0)
-              );
-            },
-            0,
-          );
-          if (
-            player1SolvedLockout > (boardsize * boardsize) / 2 ||
-            player2SolvedLockout > (boardsize * boardsize) / 2
-          ) {
-            if (player1SolvedLockout === player2SolvedLockout) {
-              this.winner = -2;
-            }
-            this.winner = player1SolvedLockout > player2SolvedLockout ? 0 : 1;
-          } else {
-            this.winner = -1;
-          }
-        }
-        break;
       default:
         this.winner = -2;
         break;
@@ -518,6 +403,7 @@ class Board implements BingoInterfaces.Board {
   }
 
   async initBoard() {
+    console.log(this.isBoardInitialized);
     if (this.isBoardInitialized) {
       return;
     }
@@ -769,4 +655,4 @@ class Player {
   }
 }
 
-export { Player, Question, QuestionFilter, Board };
+export { Player, Question, QuestionFilter, Board, Submission };
