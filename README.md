@@ -1,4 +1,5 @@
 # LCBingo
+
 ![](https://github.com/Dragonlinae/LCBingo/actions/workflows/deploy.yml/badge.svg)
 ![](https://github.com/Dragonlinae/LCBingo/actions/workflows/test.yml/badge.svg)
 

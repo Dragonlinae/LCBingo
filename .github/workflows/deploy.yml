@@ -2,7 +2,7 @@ name: Remote Deploy
 
 on:
   workflow_run:
-    workflows: ["Tests"]
+    workflows: ['Tests']
     types:
       - completed
 
@@ -13,7 +13,6 @@ jobs:
       github.event.workflow_run.event == 'push' &&
       github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
