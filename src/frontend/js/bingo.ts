@@ -75,7 +75,7 @@ socket.on('board', (_board: Board) => {
     updateTimer(board, timerTimer);
   }
   if (board.winner !== -1) {
-    alertWin(board.winner);
+    alertWin(board.winner, jsConfetti);
   }
 });
 

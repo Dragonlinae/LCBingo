@@ -1,14 +1,14 @@
 import type { Board } from '../../interfaces/bingotypes.js';
 
-function alertWin(winner: number) {
+function alertWin(winner: number, jsConfetti: any = null) {
   if (winner >= 0) {
     if (document.hasFocus()) {
-      animateWin(winner);
+      animateWin(winner, jsConfetti);
     } else {
       window.addEventListener(
         'focus',
         () => {
-          animateWin(winner);
+          animateWin(winner, jsConfetti);
         },
         { once: true },
       );
