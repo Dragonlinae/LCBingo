@@ -49,8 +49,8 @@ socket.on('board', (_board: Board) => {
   console.log('Received board:', board);
   const p1Info = document.getElementById('p1Info')!;
   const p2Info = document.getElementById('p2Info')!;
-  const infoPanelBL = document.getElementById('infoPanelBL')!;
-  const infoPanelBR = document.getElementById('infoPanelBR')!;
+  const infoPanelBL = document.getElementById('bottomleft')!;
+  const infoPanelBR = document.getElementById('bottomright')!;
   const overlayLeft = document.getElementById('overlay-left')!;
   const overlayRight = document.getElementById('overlay-right')!;
   setupPanels(
